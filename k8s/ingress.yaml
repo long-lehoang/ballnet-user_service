@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-ballnet
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - host: ballnet.com
+    http:
+      paths:
+      - path: /user-ms
+        pathType: Prefix
+        backend:
+          service:
+            name: user-ms
+            port:
+              number: 8080
