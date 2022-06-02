@@ -1,6 +1,9 @@
 server:
   port: 8080
+
 spring:
+  application:
+    name: User Service
   datasource:
     url: jdbc:mysql://localhost:3306/user_service
     username: root
@@ -30,6 +33,10 @@ management:
     web:
       exposure:
         include=*:
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
