@@ -10,7 +10,6 @@ import com.ballnet.user.service.service.AuthService;
 import com.ballnet.user.service.service.TokenService;
 import com.ballnet.user.service.utils.AppResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

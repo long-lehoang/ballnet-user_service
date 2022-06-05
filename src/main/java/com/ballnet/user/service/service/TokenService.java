@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Optional;
 
-import static com.ballnet.user.service.utils.Constants.*;
+import static com.ballnet.user.service.utils.Constants.USERNAME_CLAIM;
+import static com.ballnet.user.service.utils.Constants.USER_ID_CLAIM;
 
 @Service
 @AllArgsConstructor
