@@ -1,16 +1,19 @@
 pipeline {
-    agent { docker { image 'maven:3.8.3-openjdk-17' } }
+    agent none
     stages {
-        stage('test') {
+        stage('Build') {
             steps {
-                sh 'mvn --version'
-                sh 'mvn clean test'
+                echo 'Building..'
             }
         }
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'mvn --version'
-                sh 'mvn clean install'
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
