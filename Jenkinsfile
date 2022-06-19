@@ -4,7 +4,6 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    label 'docker-agent'
                     image 'maven:3.8.3-openjdk-17'
                 }
             }
@@ -16,7 +15,6 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    label 'docker-agent'
                     image 'maven:3.8.3-openjdk-17'
                 }
             }
