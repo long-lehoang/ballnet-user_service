@@ -23,7 +23,7 @@ app:
   jwt-expire-in-seconds: 86400
 logging:
   level:
-    com.manabie.todo: debug
+    com.ballnet.user.service: debug
     org.hibernate.engine.transaction.internal.TransactionImpl: debug
     org.springframework.orm.jpa: debug
     org.springframework.transaction: debug
@@ -40,3 +40,9 @@ eureka:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+kafka:
+  bootstrapAddress: http://localhost:9092
+  topic:
+    registration:
+      partition: 8
+      replication: 1

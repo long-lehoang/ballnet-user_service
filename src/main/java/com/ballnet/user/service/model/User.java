@@ -1,9 +1,6 @@
 package com.ballnet.user.service.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -14,4 +11,14 @@ public class User {
   private String username;
   private String password;
   private Boolean isDelete;
+
+  @Override
+  public String toString() {
+    return "User{" +
+        "id=" + id +
+        ", username='" + username + '\'' +
+        ", password='" + password + '\'' +
+        ", isDelete=" + isDelete +
+        '}';
+  }
 }

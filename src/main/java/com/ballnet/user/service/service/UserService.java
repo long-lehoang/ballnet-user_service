@@ -5,12 +5,14 @@ import com.ballnet.user.service.entity.UserEntity;
 import com.ballnet.user.service.exception.UserDuplicatedException;
 import com.ballnet.user.service.mapper.UserMapper;
 import com.ballnet.user.service.model.User;
+import com.ballnet.user.service.observers.user.UserObserver;
 import com.ballnet.user.service.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -22,11 +24,13 @@ public class UserService {
 
   private final PasswordEncoder passwordEncoder;
 
+  private final List<UserObserver> userObservers;
+
   public User register(User user) {
     if (userRepository.existsByUsername(user.getUsername())) {
       throw new UserDuplicatedException();
     }
-    log.debug("Add user: ",user);
+    log.debug("Add user: {}", user);
 
     var userEntity = UserEntity.builder()
         .username(user.getUsername())
@@ -34,6 +38,10 @@ public class UserService {
         .build();
 
     var saved = userRepository.saveAndFlush(userEntity);
+
+    userObservers.forEach((userObserver) -> {
+      userObserver.add(UserMapper.INSTANCE.toModel(saved));
+    });
 
     return UserMapper.INSTANCE.toModel(saved);
   }
@@ -57,6 +65,9 @@ public class UserService {
 
     var saved = userRepository.saveAndFlush(userEntity);
 
+    userObservers.forEach((userObserver) -> {
+      userObserver.update(UserMapper.INSTANCE.toModel(saved));
+    });
     return UserMapper.INSTANCE.toModel(saved);
   }
 }

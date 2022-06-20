@@ -65,11 +65,11 @@ public class GlobalExceptionHandle extends ResponseEntityExceptionHandler {
   @ExceptionHandler(Exception.class)
   public ResponseEntity<Object> handleCommonException(Exception ex,
                                                       HttpServletRequest request, HttpServletResponse response) {
+    ex.printStackTrace();
+    log.error(ex.getMessage());
     if (ex instanceof NullPointerException) {
-      ex.printStackTrace();
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-    log.debug(ex.getMessage());
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
   }
 
