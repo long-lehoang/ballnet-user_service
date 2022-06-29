@@ -5,7 +5,7 @@ import com.ballnet.user.service.entity.UserEntity;
 import com.ballnet.user.service.exception.UserDuplicatedException;
 import com.ballnet.user.service.mapper.UserMapper;
 import com.ballnet.user.service.model.User;
-import com.ballnet.user.service.observers.user.UserObserver;
+import com.ballnet.user.service.observer.UserObserver;
 import com.ballnet.user.service.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

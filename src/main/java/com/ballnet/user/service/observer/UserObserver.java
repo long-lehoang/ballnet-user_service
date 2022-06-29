@@ -1,4 +1,4 @@
-package com.ballnet.user.service.observers.user;
+package com.ballnet.user.service.observer;
 
 public interface UserObserver {
   public void update(Object obj);

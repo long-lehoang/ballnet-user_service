@@ -1,4 +1,4 @@
-package com.ballnet.user.service.observers.user;
+package com.ballnet.user.service.observer;
 
 import com.ballnet.user.service.model.User;
 import lombok.extern.slf4j.Slf4j;
